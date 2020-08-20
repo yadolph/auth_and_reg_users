@@ -9,7 +9,11 @@
         <h2>Регистрация</h2>
         <form action="/signup/" method="post">
             {% csrf_token %}
-            {{ form }}
+            {% for field in form %}
+                <p>{{ field.label_tag }}</p> {{ field }}
+                {{ field.errors }}
+            {% endfor %}
+
             <input type="submit" value="Submit">
         </form>
         {{ result }}
